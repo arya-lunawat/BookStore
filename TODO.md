@@ -1,6 +1,1 @@
-- [x] Remove Previous and Next buttons from HTML in reader.php
-- [x] Add "Go to Page" button in their place
-- [x] Update JavaScript: remove updateButtonStates function and calls
-- [x] Remove event listeners for prev/next buttons
-- [x] Add event listener for goto-page button with prompt logic
-- [x] Update footer.php to change "Shop Timings : 9am - 9pm" to "Call Timings : 9am - 9pm" and update icon to fa-phone
+
