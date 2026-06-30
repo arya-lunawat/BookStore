@@ -62,21 +62,25 @@ if (isset($_POST['add_to_cart'])) {
   ?>
 
   <section class="search_cont">
-    <form action="" method="post">
-      <input type="text" name="search" placeholder="Search Products......">
-      <input type="submit" value="Search" name="submit" class="product_btn">
+    <form action="" method="get">
+      <input type="text" name="search" placeholder="Search Products......" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+      <input type="submit" value="Search" class="product_btn">
     </form>
   </section>
 
   <section class="products_cont">
     <div class="pro_box_cont">
       <?php
-      if (isset($_POST['submit'])) {
-        $search_item = $_POST['search'];
-        $select_products = mysqli_query($conn, "SELECT * FROM `products` WHERE name LIKE '%{$search_item}%' or category LIKE '%{$search_item}%' or author_name LIKE '%{$search_item}%'") or die('query failed');
+      if (isset($_GET['search'])) {
+        $search_item = trim(mysqli_real_escape_string($conn, $_GET['search']));
 
-        if (mysqli_num_rows($select_products) > 0) {
-          while ($fetch_products = mysqli_fetch_assoc($select_products)) {
+        if ($search_item === '') {
+          echo '<p class="empty">Search Something!</p>';
+        } else {
+          $select_products = mysqli_query($conn, "SELECT * FROM `products` WHERE name LIKE '%{$search_item}%' OR category LIKE '%{$search_item}%' OR author_name LIKE '%{$search_item}%'") or die('query failed');
+
+          if (mysqli_num_rows($select_products) > 0) {
+            while ($fetch_products = mysqli_fetch_assoc($select_products)) {
       ?>
             <div class="pro_box">
               <img src="./uploaded_img/<?php echo $fetch_products['image']; ?>" alt="">
@@ -104,8 +108,6 @@ if (isset($_POST['add_to_cart'])) {
         } else {
           echo '<p class="empty">No result found!</p>';
         }
-      } else {
-        echo '<p class="empty">Search Something!</p>';
       }
       ?>
     </div>
