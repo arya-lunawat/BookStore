@@ -16,11 +16,11 @@ if (isset($_GET['return'])) {
 }
 
 $select_purchased = mysqli_query($conn, "SELECT p.*, pb.purchased_on, rp.current_page, rp.total_pages 
-                                         FROM purchased_books pb 
-                                         JOIN products p ON pb.product_id = p.id 
-                                         LEFT JOIN reading_progress rp ON pb.user_id = rp.user_id AND pb.product_id = rp.product_id 
-                                         WHERE pb.user_id = '$user_id' 
-                                         ORDER BY pb.purchased_on DESC") or die('query failed');
+                                        FROM purchased_books pb 
+                                        JOIN products p ON pb.product_id = p.id 
+                                        LEFT JOIN reading_progress rp ON pb.user_id = rp.user_id AND pb.product_id = rp.product_id 
+                                        WHERE pb.user_id = '$user_id' 
+                                        ORDER BY pb.purchased_on DESC") or die('query failed');
 
 ?>
 

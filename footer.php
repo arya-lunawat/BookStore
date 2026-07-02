@@ -6,9 +6,9 @@
       <a href="home.php" class="book_logo">BookVerse</a>
 
       </div>
-      <p><i class="fas fa-phone"></i> 9340752871</p>
-      <p><i class="fas fa-envelope"></i> bookverse@gmail.com</p>
-      <p><i class="fas fa-map-marker-alt"></i> Indore, India - 452001</p>
+      <p><i class="fas fa-phone"></i> 9xxxxxxxxx</p>
+      <p><i class="fas fa-envelope"></i> bookverse@test.com</p>
+      <p><i class="fas fa-map-marker-alt"></i> Indore, India</p>
       <p><i class="fa-solid fa-phone"></i> Call Timings : 9am - 9pm</p>
     </div>
 

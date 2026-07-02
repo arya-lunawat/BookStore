@@ -50,6 +50,34 @@ if (isset($_POST['add_to_cart'])) {
   color:rgb(252, 216, 158);
 }
 
+.pro_meta {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pro_meta p {
+  position: static;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 0.95rem;
+}
+
+.pro_meta p.price {
+  background-color: rgb(210, 139, 16);
+  color: black;
+  padding: 0.2rem 0.8rem;
+  border-radius: 5px;
+}
+
+.pro_meta p.author {
+  text-align: right;
+}
+
   </style>
 </head>
 
@@ -87,7 +115,10 @@ if (isset($_POST['add_to_cart'])) {
                   <?php echo $fetch_products['name']; ?>
                 </a>
               </h3>
-              <p>by <?php echo $fetch_products['author_name']; ?></p>
+              <div class="pro_meta">
+                <p class="price">Rs. <?php echo $fetch_products['price']; ?>/-</p>
+                <p class="author">by <?php echo $fetch_products['author_name']; ?></p>
+              </div>
               <div class="stars">
                 <?php
                 $rating = $fetch_products['ratings'];
@@ -97,7 +128,6 @@ if (isset($_POST['add_to_cart'])) {
                 echo " ($rating)";
                 ?>
               </div>
-              <p>Rs. <?php echo $fetch_products['price']; ?>/-</p>
               <a href="reader.php?id=<?php echo $fetch_products['id']; ?>&sample=1" class="product_btn">Read Sample</a>
             </div>
 
