@@ -205,8 +205,11 @@ body {
 }
 
 .cart_box img{
-  width: 50%;
-  height: 55%;
+  display: block;
+  width: auto;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 1rem;
 }
 
 .cart_box input{

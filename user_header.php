@@ -40,11 +40,11 @@ if(isset($message)){
 
           <div class="fas fa-user" id="user_btn"></div>
           <?php
-          $select_tbr_number=mysqli_query($conn,"SELECT * FROM `tbr_list` where user_id='$user_id'") or die('query failed');
-          $tbr_row_number=mysqli_num_rows($select_tbr_number);
+          $select_cart_number=mysqli_query($conn,"SELECT * FROM `cart` where user_id='$user_id'") or die('query failed');
+          $cart_row_number=mysqli_num_rows($select_cart_number);
           ?>
 
-          <a href="tbr.php"><i class="fas fa-book"></i><span class="quantity">(<?php echo $tbr_row_number?>)</span></a>
+          <a href="cart.php"><i class="fas fa-book"></i><span class="quantity">(<?php echo $cart_row_number?>)</span></a>
 
           <div class="fas fa-bars" id="user_menu_btn"></div>
 

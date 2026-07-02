@@ -20,28 +20,28 @@ if (isset($_GET['id'])) {
 }
 
 if (isset($_POST['add_to_cart'])) {
-    $pro_id = $_POST['product_id'];
+    $pro_id = intval($_POST['product_id']);
     $pro_name = $_POST['product_name'];
-    $pro_price = $_POST['product_price'];
-    $pro_quantity = $_POST['product_quantity'];
+    $pro_price = intval($_POST['product_price']);
+    $pro_quantity = intval($_POST['product_quantity']);
     $pro_image = $_POST['product_image'];
 
-    // Check if already in TBR
-    $check_stmt = $conn->prepare("SELECT id FROM `tbr_list` WHERE product_id = ? AND user_id = ?");
+    // Check if already in cart
+    $check_stmt = $conn->prepare("SELECT id FROM `cart` WHERE product_id = ? AND user_id = ?");
     $check_stmt->bind_param("ii", $pro_id, $user_id);
     $check_stmt->execute();
     $check_result = $check_stmt->get_result();
 
     if ($check_result->num_rows > 0) {
-        $message[] = 'Already added to TBR list!';
+        $message[] = 'Already added to cart!';
     } else {
-        // Insert into TBR
-        $insert_stmt = $conn->prepare("INSERT INTO `tbr_list` (user_id, product_id, name, price, image) VALUES (?, ?, ?, ?, ?)");
-        $insert_stmt->bind_param("iisss", $user_id, $pro_id, $pro_name, $pro_price, $pro_image);
+        // Insert into cart
+        $insert_stmt = $conn->prepare("INSERT INTO `cart` (user_id, product_id, name, price, quantity, image) VALUES (?, ?, ?, ?, ?, ?)");
+        $insert_stmt->bind_param("iisiis", $user_id, $pro_id, $pro_name, $pro_price, $pro_quantity, $pro_image);
         if ($insert_stmt->execute()) {
-            $message[] = 'Book added to TBR list!';
+            $message[] = 'Book added to cart!';
         } else {
-            $message[] = 'Failed to add to TBR list: ' . $insert_stmt->error;
+            $message[] = 'Failed to add to cart: ' . $insert_stmt->error;
         }
         $insert_stmt->close();
     }
@@ -189,7 +189,7 @@ if (isset($_POST['add_to_cart'])) {
               <input type="hidden" name="product_price" value="<?php echo $book['price']; ?>">
               <input type="hidden" name="product_image" value="<?php echo $book['image']; ?>">
               <input type="hidden" name="product_quantity" value="1">
-              <input type="submit" name="add_to_cart" value="Add to TBR List" class="product_btn">
+              <input type="submit" name="add_to_cart" value="Add to Cart" class="product_btn">
           </form>
         <?php endif; ?>
       </div>
