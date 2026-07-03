@@ -5,6 +5,6 @@ COPY . /var/www/html/
 WORKDIR /var/www/html
 ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN php composer.phar install --no-dev --optimize-autoloader
-RUN a2enmod rewrite
+RUN a2dismod mpm_event mpm_worker 2>/dev/null; a2enmod mpm_prefork rewrite
 EXPOSE 80
 CMD ["apache2-foreground"]
