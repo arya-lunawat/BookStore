@@ -250,14 +250,6 @@ Live at **[bookverse-5set.onrender.com](https://bookverse-5set.onrender.com/)** 
 
 ---
 
-## 🗺 Roadmap
-
-- [ ] Migrate password storage from MD5 to `password_hash()`
-- [ ] Move book cover/PDF uploads to persistent object storage (S3-compatible) so they survive redeploys
-- [ ] Add automated tests around checkout and access-control logic
-
----
-
 ## 👨‍💻 Author
 
 **Arya Lunawat** <br>
