@@ -43,6 +43,19 @@ Built as a complete PHP + MySQL application, it demonstrates end-to-end web prod
 
 ## 📱 Screenshots
 
+### Login & Register
+
+<table>
+  <tr>
+    <td align="center"><b>Login</b></td>
+    <td align="center"><b>Register</b></td>
+  </tr>
+  <tr>
+    <td><img src="screenshots/login.png" width="380"/></td>
+    <td><img src="screenshots/register.png" width="380"/></td>
+  </tr>
+</table>
+
 ### Storefront
 
 <table>
@@ -87,13 +100,13 @@ Built as a complete PHP + MySQL application, it demonstrates end-to-end web prod
 <table>
   <tr>
     <td align="center"><b>Admin Panel</b></td>
+    <td align="center"><b>Registered Users</b></td>
   </tr>
   <tr>
     <td><img src="screenshots/admin.png" width="380"/></td>
+    <td><img src="screenshots/users.png" width="380"/></td>
   </tr>
 </table>
-
-*(Add screenshots to the `/screenshots` folder using the filenames above, or edit the paths to match your own.)*
 
 ---
 
@@ -246,7 +259,7 @@ Live at **[bookverse-5set.onrender.com](https://bookverse-5set.onrender.com/)** 
 - Every session-gated page validates `$_SESSION['user_id']` safely and halts execution (`exit`) on an unauthenticated request, rather than relying on `header()` alone
 - File access to purchased PDFs is verified server-side against the `purchased_books` table before serving
 - Debug and seeding scripts used during development have been removed from the repository
-- **Known issue, in progress:** passwords are currently hashed with MD5 in `login.php`/`register.php`; migrating to PHP's `password_hash()`/`password_verify()` is the next planned fix
+- Passwords are currently hashed with MD5 in `login.php`/`register.php`; migrating to PHP's `password_hash()`/`password_verify()` is the next planned fix
 
 ---
 
