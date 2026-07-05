@@ -36,19 +36,19 @@ include 'user_header.php';
   <h2>Ordered Products</h2>
   <?php
     $grand_total=0;
-    $select_tbr=mysqli_query($conn,"SELECT * FROM `tbr_list` WHERE user_id='$user_id'") or die('query failed');
+    $select_cart=mysqli_query($conn,"SELECT * FROM `cart` WHERE user_id='$user_id'") or die('query failed');
 
-    if(mysqli_num_rows($select_tbr)>0){
-      while($fetch_tbr=mysqli_fetch_assoc($select_tbr)){
-        $total_price=$fetch_tbr['price'];
+    if(mysqli_num_rows($select_cart)>0){
+      while($fetch_cart=mysqli_fetch_assoc($select_cart)){
+        $total_price=$fetch_cart['price'];
         $grand_total+=$total_price;
       
   ?>
   <div class="single_order_product">
-    <img src="./uploaded_img/<?php echo$fetch_tbr['image'];?>" alt="">
+    <img src="./uploaded_img/<?php echo $fetch_cart['image'];?>" alt="">
     <div class="single_des">
-    <h3><?php echo $fetch_tbr['name'];?></h3>
-    <p>Rs. <?php echo $fetch_tbr['price'];?></p>
+    <h3><?php echo $fetch_cart['name'];?></h3>
+    <p>Rs. <?php echo $fetch_cart['price'];?></p>
     </div>
 
   </div>
@@ -57,7 +57,7 @@ include 'user_header.php';
   <?php
   }
 }else{
-  echo '<p class="empty">your TBR list is empty</p>';
+  echo '<p class="empty">Your cart is empty</p>';
 }
   ?>
   <div class="checkout_grand_total"> GRAND TOTAL : <span>$<?php echo $grand_total; ?>/-</span> </div>
